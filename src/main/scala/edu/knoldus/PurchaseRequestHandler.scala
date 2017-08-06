@@ -4,7 +4,7 @@ import akka.actor._
 
 class PurchaseRequestHandler(validationActorRef: ActorRef) extends Actor with ActorLogging {
 
-  override def receive: Unit = {
+  override def receive: Receive = {
 
     case customer: Customer =>
       log.info("Customer information received in PurchaseRequestHandler..Forwarding your request for validation")

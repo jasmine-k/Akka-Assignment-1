@@ -15,7 +15,7 @@ class PurchaseActorMaster(purchaseActorRef: ActorRef) extends Actor with ActorLo
     Router(RoundRobinRoutingLogic(), routees)
   }
 
-  override def receive: Unit = {
+  override def receive: Receive = {
 
     case customer: Customer => log.info("Sending customer to worker PurchaseActor.")
       router.route(customer, sender())
@@ -39,7 +39,7 @@ object PurchaseActorMaster {
 
 class PurchaseActor extends Actor with ActorLogging {
 
-  override def receive: Unit = {
+  override def receive: Receive = {
     case customer: Customer => log.info("Sending Smartphone to customer.")
       sender() ! SamsungSmartphone
   }

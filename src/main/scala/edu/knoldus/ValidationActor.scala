@@ -6,7 +6,7 @@ class ValidationActor(purchaseActorMasterRef: ActorRef) extends Actor with Actor
 
   var numberOfItems = 1000
 
-  override def receive: Unit = {
+  override def receive: Receive = {
 
     case customer: Customer =>
 
